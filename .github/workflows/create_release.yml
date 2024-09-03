@@ -27,7 +27,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create v$NEW_VERSION --latest \
+          gh release create "pybashify" --latest \
             --repo AmeerArsala/pybashify \
             --generate-notes \
             --title "Release $NEW_VERSION" \
