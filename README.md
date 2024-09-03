@@ -25,6 +25,12 @@ And even if it were to matter, you have CLI options to mitigate this.
 pip install pybashify
 ```
 
+### Building from source
+
+```bash
+pixi run build
+```
+
 ## Usage
 
 First, create a bash script. This will serve as your template for the real bash script that you will generate.
@@ -134,3 +140,11 @@ Another Caveat:
 ## Compatibility with Python
 
 3.10+ is required. Some features break when on 3.9
+
+
+## Development
+
+```bash
+pixi install
+pixi shell -e dev
+```

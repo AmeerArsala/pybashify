@@ -1482,7 +1482,7 @@ packages:
   name: pybashify
   version: 0.0.1
   path: .
-  sha256: 67ccbd5bd59b3ccf0b86241ff55a7b8bf13190344738bb525a437bf9587ed731
+  sha256: 2a804dbf28d043a2e26072b785b5471aa0ce6850fc06c461a2a11160a9191a93
   requires_dist:
   - typer>=0.12.5,<0.13
   - pydantic>=2.0
