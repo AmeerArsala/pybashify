@@ -1,0 +1,46 @@
+name: Create GitHub Release
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Get latest release tag
+        id: latest_release
+        run: echo ::set-output-name::latest_tag::${{ github.event_after.ref }}
+
+      - name: Increment patch version
+        run: |
+          LATEST_TAG=$(echo ${{ steps.latest_release.outputs.latest_tag }} | cut -d '.' -f 3)
+          NEW_VERSION=$((LATEST_TAG + 1))
+          echo $NEW_VERSION > VERSION.txt
+
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh release create \
+            --repo seanh/your-repo-name \
+            --generate-notes \
+            --title "Release $NEW_VERSION" \
+            --notes-file RELEASE_NOTES.md \
+            --draft \
+            --prerelease
+
+      - name: Publish PyPI package
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.PYPI_API_TOKEN }}
+
+      - name: Push tags
+        run: |
+          git push origin ${{ github.event_after.ref }} --tags
+
