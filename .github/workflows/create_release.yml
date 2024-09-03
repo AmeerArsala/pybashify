@@ -27,14 +27,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          gh release create \
-            --repo seanh/your-repo-name \
+          gh release create --latest \
+            --repo AmeerArsala/pybashify \
             --generate-notes \
             --title "Release $NEW_VERSION" \
-            --notes-file RELEASE_NOTES.md \
-            --draft \
-            --prerelease \
-            --latest
 
       - name: Publish PyPI package
         uses: pypa/gh-action-pypi-publish@release/v1
