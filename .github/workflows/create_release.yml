@@ -33,7 +33,8 @@ jobs:
             --title "Release $NEW_VERSION" \
             --notes-file RELEASE_NOTES.md \
             --draft \
-            --prerelease
+            --prerelease \
+            --latest
 
       - name: Publish PyPI package
         uses: pypa/gh-action-pypi-publish@release/v1
