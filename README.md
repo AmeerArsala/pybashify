@@ -111,7 +111,7 @@ declare PY.BASHIFY_EXECUTE
 
 Obviously, you can also modify the prefix with the `--compat-prefix` flag.
 
-Alright, I'm done yapping. Have a nice day, and remember to stay hydrated and that I use blendOS btw :smiling_imp: :fire: :100:
+Alright, I'm done yapping. Have a nice day, remember to stay hydrated, and definitely remember that I use blendOS btw :smiling_imp: :fire: :100:
 
 ## Raw Reference
 
