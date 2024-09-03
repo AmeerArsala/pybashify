@@ -38,10 +38,11 @@ def compile(template_file: str, out: str | None, compat_prefix: str = ""):
         template_lines[i] = stripped_line
         
         if stripped_line.startswith(f"declare {compat_prefix}"):
-            declare_lines.append(BashifyDeclaration(line=stripped_line, idx=i))
             if BashifyExecution.is_bashify_execution(line=stripped_line, prefix=compat_prefix):
                 execution = BashifyExecution(line=stripped_line, idx=i)
                 execution.fill()
+            else:
+                declare_lines.append(BashifyDeclaration(line=stripped_line, idx=i))
     
     # 2. Process the BASHIFY_EXECUTE
     # If it is BASHIFY_EXECUTE="my.python.module" then don't associate it w/ any of the previously made declarations; ignore declarations at that point
@@ -53,12 +54,12 @@ def compile(template_file: str, out: str | None, compat_prefix: str = ""):
         import_sources: str = ""
         for declaration in declare_lines:
             declaration.fill(prefix=compat_prefix)
-            import_sources += f"{declaration.as_import(prefix=compat_prefix)}\n"
+            import_sources += f"{declaration.as_import(prefix=compat_prefix)}\n\n'''SPACER'''\n\n"
 
-        full_source = inline_imports_from_source(import_sources)
+        full_source = inline_imports_from_source(import_sources).replace('"""SPACER"""', "\n\n")
     
     # Bashify the source
-    bashified_source: str = bashify_pysource(full_source)
+    bashified_source: str = bashify_pysource(full_source.strip())
 
     # 4. replace the BASH_EXECUTE line with the source code
     template_lines[execution.idx] = bashified_source
@@ -66,10 +67,10 @@ def compile(template_file: str, out: str | None, compat_prefix: str = ""):
     # 5. remove the declare statements
     compiled_bash_lines = np.array(template_lines)
     lines_to_delete: list[int] = [declaration.idx for declaration in declare_lines]
-    np.delete(compiled_bash_lines, lines_to_delete)
+    compiled_bash_lines = np.delete(compiled_bash_lines, lines_to_delete)
     
     # 6. make a new version of the file
-    compiled_bash_file_str: str = "\n".join(compiled_bash_lines.tolist())
+    compiled_bash_file_str: str = "\n".join(compiled_bash_lines.tolist()).strip()
     
     # 7. write it to output
     write_to_out(template_file, out, compiled_bash_file_str)

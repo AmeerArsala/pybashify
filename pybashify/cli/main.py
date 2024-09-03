@@ -1,20 +1,21 @@
 import typer
 from pybashify.compilation import compiler
 
+#from testing import script
 
 app = typer.Typer()
 
 
 @app.command()
 def _(template_file: str, out: str | None = None,
-      compat: bool = False, compat_prefix: str = "PY",
+      compat: bool = False, compat_prefix: str = "PY"
 ):
     """
     Without compat mode:
         - `declare` refers to a python module
         - the name of the variable is the python module (in the same way you import my.python.module)
-        - the value is optional, but if specified as an int, that represents the order in which the scripts appear
-        - otherwise, order is inferred by the order in which your declares are. And yes you can mix them but it is not recommended
+        - there should not be a value
+        - order is inferred by the order in which your declares are. And yes you can mix them but it is not recommended
         - aside from the order of the declares, the positioning of them in the file does not matter as they will be deleted in the compiled version
         - The positioning of your final python script declaration, however, DOES matter.
         - Use `declare BASHIFY_EXECUTE` for where you want to execute the Python code. However, as stated above, POSITIONING MATTERS
