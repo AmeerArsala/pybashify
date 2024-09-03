@@ -34,8 +34,9 @@ def compile(template_file: str, out: str | None, compat_prefix: str = ""):
     for (i, line) in enumerate(template_lines):
         # Trim the leading/trailing whitespace
         stripped_line: str = line.strip()
-
+        
         template_lines[i] = stripped_line
+        
         if stripped_line.startswith(f"declare {compat_prefix}"):
             declare_lines.append(BashifyDeclaration(line=stripped_line, idx=i))
             if BashifyExecution.is_bashify_execution(line=stripped_line, prefix=compat_prefix):
