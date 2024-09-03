@@ -1405,7 +1405,7 @@ packages:
   name: pybashify
   version: 0.0.1
   path: .
-  sha256: 4591c9002bde29b181bdc6ee88325e1709653c8a21b14174a6750fc4276570d0
+  sha256: a97ed32a2d513db1170a3eeeb4dcf02fe6f142730943e100c856092b2f1600b2
   requires_dist:
   - typer>=0.12.5,<0.13
   - hatch ; extra == 'devdeps'
