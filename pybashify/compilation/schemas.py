@@ -18,11 +18,11 @@ class BashifyDeclaration(BaseModel):
     
     def as_import(self, prefix: str = "") -> str:
         # +1 for the '.' in the prefix
-        offset: int = 1 if len(prefix) > 0 else 0
-        unprefixed_module_name: str = self.module_name[len(prefix)+offset:]
+        #offset: int = 1 if len(prefix) > 0 else 0
+        #unprefixed_module_name: str = self.module_name[len(prefix)+offset:]
         
-        if True or '.' not in unprefixed_module_name:
-            return f"import {unprefixed_module_name}"
+        if True or '.' not in self.module_name:
+            return f"import {self.module_name}"
         
         # last_dot_idx: int = unprefixed_module_name.rindex('.')
         # parent: str = unprefixed_module_name[:last_dot_idx]
@@ -53,6 +53,8 @@ class BashifyExecution(BaseModel):
         line_nospaces: str = line.replace(" ", "")
         offset: int = 1 if len(prefix) > 0 else 0  # for the '.' in the prefix
         declaration_len: int = len(f"declare{prefix}") + offset
+
+        
         
         s: str = ""
         if '=' in line_nospaces:
