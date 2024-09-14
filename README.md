@@ -146,5 +146,7 @@ Another Caveat:
 
 ```bash
 pixi install
-pixi shell -e dev
+pixi shell --change-ps1=false -e dev
 ```
+
+Oh yeah, this project uses pipelight btw because I said so. You need to download that and Deno then you are good to go. Don't get scared of the deno stuff, this is just for a few things under the hood for logs in dev not prod. :fire:

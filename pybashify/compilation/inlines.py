@@ -1,10 +1,11 @@
 import ast
-import astor
 import importlib
 import inspect
-import sys
 import os
+import sys
 from types import ModuleType
+
+import astor
 
 
 class RecursiveImportInliner(ast.NodeTransformer):
@@ -43,7 +44,7 @@ class RecursiveImportInliner(ast.NodeTransformer):
 
         try:
             module = importlib.import_module(module_name)
-            
+
             if hasattr(module, '__file__') and module.__file__:
                 source = inspect.getsource(module)
                 module_ast = ast.parse(source)
@@ -51,9 +52,9 @@ class RecursiveImportInliner(ast.NodeTransformer):
                 return module_ast.body
             else:
                 return [f"import {module_name}"]
-        except Exception as e:
+        except:  # Exception as e
             return [f"import {module_name}"]
-            #return [ast.Expr(ast.Str(f"# Error inlining module {module_name}: {str(e)}"))]
+            # return [ast.Expr(ast.Str(f"# Error inlining module {module_name}: {str(e)}"))]
 
     def inline_attribute(self, module_name, attr_name):
         module = importlib.import_module(module_name)
@@ -69,7 +70,13 @@ class RecursiveImportInliner(ast.NodeTransformer):
                 self.generic_visit(attr_ast)  # Recursively inline imports in this attribute
                 return attr_ast.body
             except Exception as e:
-                return [ast.Expr(ast.Str(f"# Error inlining attribute {attr_name} from {module_name}: {str(e)}"))]
+                return [
+                    ast.Expr(
+                        ast.Str(
+                            f"# Error inlining attribute {attr_name} from {module_name}: {str(e)}"
+                        )
+                    )
+                ]
 
     @staticmethod
     def get_package_from_path(path, level):

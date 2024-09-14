@@ -2,7 +2,7 @@
 name = "pybashify"
 version = "0.0.1"
 description = "Use Python to write bash scripts while interop w/ bash"
-authors = [ {name = "Ameer Arsala", email = "ameer.arsala03@gmail.com"} ]
+authors = [ { name = "Ameer Arsala", email = "ameer.arsala03@gmail.com" } ]
 requires-python = ">= 3.10"
 dependencies = [
   "typer>=0.12.5,<0.13",
@@ -15,8 +15,7 @@ dependencies = [
 devdeps = [
   "hatch",
   "pytest",
-  "pre-commit",
-  "black>=24.8.0,<25"
+  "ruff>=0.6.5,<0.7"
 ]
 
 [project.scripts]
@@ -42,3 +41,7 @@ build = "hatch build ./release"
 [tool.pixi.environments]
 dev = { features = ["devdeps"] }
 prod = { features = [] }
+
+[tool.ruff]
+# Specify the version here where it is actually specified above
+target-version = "py310"
