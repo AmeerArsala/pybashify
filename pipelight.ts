@@ -1,6 +1,6 @@
 import type { Pipeline, Config } from "https://deno.land/x/pipelight/mod.ts";
 
-// Pre-commit & Pre-push:
+// Pre-commit:
 // 1.) Format
 // 2.) Lint
 
@@ -23,7 +23,7 @@ const formatAndLint: Pipeline = {
   triggers: [
     {
       branches: ["main", "dev"],
-      actions: ["pre-commit", "pre-push"]
+      actions: ["pre-commit"] //, "pre-push"]
     }
   ]
 };

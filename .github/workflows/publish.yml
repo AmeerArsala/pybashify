@@ -3,8 +3,7 @@ name: Publish
 
 on:
   push:
-    tags:
-      - "*"
+    branches: [ $default-branch ]
 
 jobs:
   publish:
@@ -13,20 +12,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      
       - name: Set up Pixi Python Project
         uses: prefix-dev/setup-pixi@v0.8.1
         with:
           pixi-version: v0.28.2
           cache: true
           environments: dev  # separate by spaces; only using the dev environment to build
-      
       - name: Install twine (globally as to not interfere)
         run: pixi global install twine
-      
       - name: Build package
         run: pixi run -e dev build
-      
       - name: Publish to PyPI
         run: twine upload dist/*
         with:
