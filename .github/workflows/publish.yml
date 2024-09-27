@@ -3,7 +3,7 @@ name: Publish
 on:
   push:
     branches:
-      - '*'
+      - main
   release:
     types: [created]
 
@@ -30,6 +30,6 @@ jobs:
       
       - name: Publish to PyPI
         run: twine upload dist/*
-        with:
+        env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
