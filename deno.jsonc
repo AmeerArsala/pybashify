@@ -1,0 +1,2 @@
+// JSONC files allow you to write comments
+// This file is here so that editors (VSCode and Neovim) can recognize the Deno imports and lint correctly

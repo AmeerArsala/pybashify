@@ -35,8 +35,10 @@ platforms = ["linux-64", "osx-arm64", "win-64"]
 [tool.pixi.pypi-dependencies]
 pybashify = { path = ".", editable = true }
 
-[tool.pixi.tasks]
-build = "hatch build ./release"
+# [tool.pixi.tasks]
+
+[tool.pixi.feature.devdeps.tasks]
+build = "hatch build ./dist"
 
 [tool.pixi.environments]
 dev = { features = ["devdeps"] }

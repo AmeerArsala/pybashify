@@ -149,4 +149,5 @@ pixi install
 pixi shell --change-ps1=false -e dev
 ```
 
-Oh yeah, this project uses pipelight btw because I said so. You need to download that and Deno then you are good to go. Don't get scared of the deno stuff, this is just for a few things under the hood for logs in dev not prod. :fire:
+Oh yeah, this project uses [pipelight](https://pipelight.dev) btw because I said so. It is used for pre-commit / push hooks while still being readable and maintainable.
+You need to download that and Deno then you are good to go. Don't get scared of the deno stuff, this is just for a few things under the hood for logs in dev not prod. :fire:

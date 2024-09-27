@@ -1,7 +1,9 @@
 import type { Pipeline, Config } from "https://deno.land/x/pipelight/mod.ts";
 
+// Pre-commit & Pre-push:
 // 1.) Format
 // 2.) Lint
+
 // Then Push
 // On Push, publish to PyPI
 // Let that carry to conda-forge
