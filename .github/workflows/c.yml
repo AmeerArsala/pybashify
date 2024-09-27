@@ -1,9 +1,7 @@
 name: PubC
 
 on:
-  push:
-    tags:
-      - '*'
+  - push
 
 jobs:
   publish:
