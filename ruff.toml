@@ -48,6 +48,7 @@ ignore = [
   "B018",  # useless expression; sometimes it is needed
   "B905",  # zip without explicit strict=True. It should be good practice but for prototyping and code readibility it can just be debugged honestly
   "B008",  # function call as default argument. Again, common sense should apply here that the function call only runs once
+  "B007",  # unused loop variables. This is ok stylistically
   "B006",  # mutable argument as default argument. I GET IT; it's only called once. However, there are edge cases where the rule must be broken
 ]
 
