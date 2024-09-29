@@ -45,6 +45,10 @@ ignore = [
   "E722",  # allow the bare except if you aint using it
   "E731",  # lambda assignment. screw yall i can do whatever i want
   "C417",  # unnecessary-map; it seems ok syntactically and more readable
+  "B018",  # useless expression; sometimes it is needed
+  "B905",  # zip without explicit strict=True. It should be good practice but for prototyping and code readibility it can just be debugged honestly
+  "B008",  # function call as default argument. Again, common sense should apply here that the function call only runs once
+  "B006",  # mutable argument as default argument. I GET IT; it's only called once. However, there are edge cases where the rule must be broken
 ]
 
 # Only these rules are fixable when doing `ruff check --fix`
