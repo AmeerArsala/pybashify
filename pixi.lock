@@ -1364,9 +1364,9 @@ packages:
   sha256: 4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35
 - kind: pypi
   name: pybashify
-  version: 0.0.3
+  version: 0.0.4
   path: .
-  sha256: 39c48eb93b34d290e3301d940c5a58406c245c352076e95395375799d1948521
+  sha256: ffef2b8b57b9015430b01000fbdb6a21af1dd5c5c529d3edfde00d30bd0e70a9
   requires_dist:
   - typer>=0.12.5,<0.13
   - pydantic>=2.0
