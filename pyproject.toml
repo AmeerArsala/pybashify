@@ -3,6 +3,8 @@ name = "pybashify"
 version = "0.0.3"
 description = "Use Python to write bash scripts while interop w/ bash"
 authors = [ { name = "Ameer Arsala", email = "ameer.arsala03@gmail.com" } ]
+readme = "README.md"
+license = { file = "LICENSE" }
 requires-python = ">= 3.10"
 dependencies = [
   "typer>=0.12.5,<0.13",
@@ -10,6 +12,11 @@ dependencies = [
   "numpy>=2.1.0,<3",
   "astor>=0.8.1,<0.9"
 ]
+
+[project.urls]
+Repository = "https://github.com/AmeerArsala/pybashify"
+Source = "https://github.com/AmeerArsala/pybashify"
+Tracker = "https://github.com/AmeerArsala/pybashify/issues"
 
 [project.optional-dependencies]
 devdeps = [
