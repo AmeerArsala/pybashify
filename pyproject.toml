@@ -22,8 +22,9 @@ Tracker = "https://github.com/AmeerArsala/pybashify/issues"
 fdev = [
   "hatch",
   "pytest",
-  "ruff>=0.6.5,<0.7"
-, "tomli>=2.0.2,<3"]
+  "ruff>=0.6.5,<0.7",
+  "tomli>=2.0.2,<3"
+]
 
 [project.scripts]
 bashify = "pybashify.cli.main:app"
