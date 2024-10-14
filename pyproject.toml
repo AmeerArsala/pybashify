@@ -1,6 +1,6 @@
 [project]
 name = "pybashify"
-version = "0.0.4"
+version = "0.0.5"
 description = "Use Python to write bash scripts while interop w/ bash"
 authors = [ { name = "Ameer Arsala", email = "ameer.arsala03@gmail.com" } ]
 readme = "README.md"

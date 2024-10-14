@@ -1367,9 +1367,9 @@ packages:
   sha256: 4b41f3967fce3af57cc7e94b888626c18bf37a083e3651ca8feeb66d492fef35
 - kind: pypi
   name: pybashify
-  version: 0.0.4
+  version: 0.0.5
   path: .
-  sha256: 765cddcfd1b91668bbc3187c31724195ad7ab3bfef86e5cfeac07d744fac0fab
+  sha256: 81ebc158b2b772f42c9fc4b4622b844a68e6df0484169675ab08e1d2597e2ff2
   requires_dist:
   - typer>=0.12.5,<0.13
   - pydantic>=2.0
@@ -1378,21 +1378,7 @@ packages:
   - hatch ; extra == 'fdev'
   - pytest ; extra == 'fdev'
   - ruff>=0.6.5,<0.7 ; extra == 'fdev'
-  requires_python: '>=3.10'
-  editable: true
-- kind: pypi
-  name: pybashify
-  version: 0.0.4
-  path: .
-  sha256: 765cddcfd1b91668bbc3187c31724195ad7ab3bfef86e5cfeac07d744fac0fab
-  requires_dist:
-  - typer>=0.12.5,<0.13
-  - pydantic>=2.0
-  - numpy>=2.1.0,<3
-  - astor>=0.8.1,<0.9
-  - hatch ; extra == 'fdev'
-  - pytest ; extra == 'fdev'
-  - ruff>=0.6.5,<0.7 ; extra == 'fdev'
+  - tomli>=2.0.2,<3 ; extra == 'fdev'
   requires_python: '>=3.10'
   editable: true
 - kind: pypi
