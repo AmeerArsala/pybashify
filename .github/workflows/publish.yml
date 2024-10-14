@@ -2,10 +2,8 @@ name: Publish
 
 on:
   push:
-    branches:
-      - main
-  release:
-    types: [created]
+    tags:
+      - "v*"
 
 jobs:
   publish:
@@ -33,3 +31,13 @@ jobs:
         env:
           TWINE_USERNAME: __token__
           TWINE_PASSWORD: ${{ secrets.PYPI_TOKEN }}
+
+      # Create GitHub release
+      - name: Create release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          tag: ${{ github.ref_name }}
+        run: |
+          gh release create "$tag" ./dist/* \
+              --repo="$GITHUB_REPOSITORY" \
+              --generate-notes

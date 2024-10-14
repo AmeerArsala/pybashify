@@ -111,6 +111,11 @@ declare PY.BASHIFY_EXECUTE
 
 Obviously, you can also modify the prefix with the `--compat-prefix` flag.
 
+### Compiled Outputs
+
+You can just have your template be `my_script.template.sh` and if you run it without specifying an output, it will have the compiled version be `my_script.sh`.
+If you do not use this notation and still go default without specifying an output script, it will by default do `my_script_template-compiled.sh` if your script input was `my_script_template.sh`.
+
 Alright, I'm done yapping. Have a nice day, remember to stay hydrated, and definitely remember that I use blendOS btw :smiling_imp: :fire: :100:
 
 ## Raw Reference
@@ -151,3 +156,11 @@ pixi shell --change-ps1=false -e dev
 
 Oh yeah, this project uses [pipelight](https://pipelight.dev) btw because I said so. It is used for pre-commit / push hooks while still being readable and maintainable.
 You need to download that and Deno then you are good to go. Don't get scared of the deno stuff, this is just for a few things under the hood for logs in dev not prod. :fire:
+
+### Publishing releases
+
+In order to do this, I have standardized it via running this command:
+
+```bash
+scripts/update-version.sh
+```

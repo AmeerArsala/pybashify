@@ -40,7 +40,7 @@ select = [
 
 # Linting rules we are ignoring
 ignore = [
-  "F401",  # unused imports; can just deal w/ that manually
+  #"F401",  # unused imports; can just deal w/ that manually
   "E712",  # if a is True. sometimes syntax looks better this way
   "E722",  # allow the bare except if you aint using it
   "E731",  # lambda assignment. screw yall i can do whatever i want

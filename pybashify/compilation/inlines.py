@@ -40,7 +40,7 @@ class RecursiveImportInliner(ast.NodeTransformer):
         self.processed_modules.add(module_name)
 
         if module_name in sys.stdlib_module_names:
-            return [f"import {module_name}"]
+            return [f"\nimport {module_name}"]
 
         try:
             module = importlib.import_module(module_name)
@@ -51,9 +51,9 @@ class RecursiveImportInliner(ast.NodeTransformer):
                 self.generic_visit(module_ast)  # Recursively inline imports in this module
                 return module_ast.body
             else:
-                return [f"import {module_name}"]
+                return [f"\nimport {module_name}"]
         except:  # Exception as e
-            return [f"import {module_name}"]
+            return [f"\nimport {module_name}"]
             # return [ast.Expr(ast.Str(f"# Error inlining module {module_name}: {str(e)}"))]
 
     def inline_attribute(self, module_name, attr_name):

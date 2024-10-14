@@ -19,11 +19,11 @@ Source = "https://github.com/AmeerArsala/pybashify"
 Tracker = "https://github.com/AmeerArsala/pybashify/issues"
 
 [project.optional-dependencies]
-devdeps = [
+fdev = [
   "hatch",
   "pytest",
   "ruff>=0.6.5,<0.7"
-]
+, "tomli>=2.0.2,<3"]
 
 [project.scripts]
 bashify = "pybashify.cli.main:app"
@@ -44,11 +44,11 @@ pybashify = { path = ".", editable = true }
 
 # [tool.pixi.tasks]
 
-[tool.pixi.feature.devdeps.tasks]
+[tool.pixi.feature.fdev.tasks]
 build = "hatch build ./dist"
 
 [tool.pixi.environments]
-dev = { features = ["devdeps"] }
+dev = { features = ["fdev"] }
 prod = { features = [] }
 
 [tool.ruff]

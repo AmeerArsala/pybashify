@@ -23,7 +23,7 @@ class BashifyDeclaration(BaseModel):
         # unprefixed_module_name: str = self.module_name[len(prefix)+offset:]
 
         if True or '.' not in self.module_name:
-            return f"import {self.module_name}"
+            return f"\nimport {self.module_name}"
 
         # last_dot_idx: int = unprefixed_module_name.rindex('.')
         # parent: str = unprefixed_module_name[:last_dot_idx]

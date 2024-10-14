@@ -13,10 +13,15 @@ def bashify_pysource(pysource: str) -> str:
 def write_to_out(template_file: str, out: str | None, content: str):
     if out is None:
         # Decide a default name
-        dot_index: int = template_file.rindex('.')
-        file_name: str = template_file[:dot_index]
-
-        out = file_name + "-compiled.sh"
+        if template_file.endswith(".template.sh"):
+            dot_index: int = template_file.index(".template.sh")
+            file_name: str = template_file[:dot_index]
+            out = file_name + ".sh"
+        else:
+            # Fallback default
+            dot_index: int = template_file.rindex('.')
+            file_name: str = template_file[:dot_index]
+            out = file_name + "-compiled.sh"
 
     # Write to file
     with open(out, 'w') as output_file:
